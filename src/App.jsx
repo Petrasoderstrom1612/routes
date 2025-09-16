@@ -11,7 +11,6 @@ function App() {
       <BrowserRouter>
       <Link to="/">Home</Link>
       <Link to="/about">About</Link>
-      <Link to="*">Error page</Link>
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/about" element={<About/>}/>
