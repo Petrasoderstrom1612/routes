@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"; //you write {BrowserRouter as Router}
 import Home from "./components/Home"
+import About from "./components/About"
 import NotFound from "./components/NotFound"
 
 function App() {
@@ -9,8 +10,11 @@ function App() {
     <>
       <BrowserRouter>
       <Link to="/home">Home</Link>
+      <Link to="/about">About</Link>
+      <Link to="*">Error page</Link>
         <Routes>
           <Route path="/home" element={<Home/>}/>
+          <Route path="/about" element={<About/>}/>
           <Route path="*" element={<NotFound/>} /> {/* path="*" Default for all non-declared path, you need to import it as component*/}
         </Routes>
       </BrowserRouter>
