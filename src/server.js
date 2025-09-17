@@ -1,6 +1,6 @@
 import { createServer, Model } from "miragejs" //package that imitates an API behavior
 
-export function makeServer({ environment = "development" } = {}) {
+export function makeServer() {
     createServer({
         models: {
             vans: Model,
