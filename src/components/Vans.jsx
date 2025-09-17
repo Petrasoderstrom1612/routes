@@ -12,17 +12,23 @@ const Vans = () => {
         })
     },[])
 
-  return (
-    <div>
-      <p>here come vans</p>
-      {vans.map(oneVan => 
-        <div key={oneVan.id}>
-        <h2>{oneVan.name}</h2>
-        <h2>${oneVan.price}/day</h2>
-        <img src={oneVan.imageUrl} alt={oneVan.name}/>
-        <p>{oneVan.type}</p>
+    const vansCards = vans.map(oneVan => 
+        <div key={oneVan.id} className="van-tile">
+            <img src={oneVan.imageUrl} />
+            <div className="van-info">
+                <h3>{oneVan.name}</h3>
+                <p>${oneVan.price}<span>/day</span></p>
+            </div>
+            <i className={`van-type ${oneVan.type} selected`}>{oneVan.type}</i>
         </div>
-      )}
+        )
+
+  return (
+    <div className="van-list-container">
+        <h1>Explore our van options</h1>
+        <div className="van-list">
+            {vansCards}
+        </div>
     </div>
   )
 }
