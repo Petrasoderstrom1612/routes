@@ -149,6 +149,12 @@ header a:hover {
     padding-inline: 23px
 }
 
+.van-link{
+    text-decoration: none !important;  
+    color:black;
+    /* background-color: white;; */
+}
+
 .van-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -171,6 +177,11 @@ header a:hover {
 .van-tile img {
     max-width: 100%;
     border-radius: 5px;
+}
+
+.van-name{
+    font-size:22px;
+    font-weight: bold;
 }
 
 .van-list-container button {

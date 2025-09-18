@@ -14,11 +14,11 @@ const Vans = () => {
     },[])
 
     const vansCards = vans.map(oneVan =>               //great way to declare to screen reader what the link is about, it will skip reading each element in it and only read the aria-label
-        <Link to={`/vans/${oneVan.id}`} key={oneVan.id} aria-label={`View details for ${oneVan.name}, priced at ${oneVan.price} per day`}>
+        <Link to={`/vans/${oneVan.id}`} key={oneVan.id} aria-label={`View details for ${oneVan.name}, priced at ${oneVan.price} per day`} className="van-link">
             <div className="van-tile">
                 <img src={oneVan.imageUrl} alt={oneVan.name}/>
                 <div className="van-info">
-                    <p className="van-name">{oneVan.name}</p>
+                    <p className="van-name">{oneVan.name}</p>  {/* Have p everywhere so the screenreader does not read headings */}
                     <p>${oneVan.price}<span>/day</span></p>
                 </div>
                 <i className={`van-type ${oneVan.type} selected`}>{oneVan.type}</i>
