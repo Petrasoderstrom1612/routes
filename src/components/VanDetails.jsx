@@ -20,7 +20,7 @@ const VanDetails = () => {
     <div className="van-detail-container"> {/*Handle situation if no id is available, fetch returns null */}
          {vanInfo ? ( 
             <div className="van-detail">
-                <img src={vanInfo.imageUrl} />
+                <img src={vanInfo.imageUrl} alt={vanInfo.name}/>
                 <i className={`van-type ${vanInfo.type} selected`}>{vanInfo.type}</i>
                 <h2>{vanInfo.name}</h2>
                 <p className="van-price"><span>${vanInfo.price}</span>/day</p>

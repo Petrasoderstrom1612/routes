@@ -178,7 +178,10 @@ header a:hover {
     max-width: 100%;
     border-radius: 5px;
 }
-
+.van-detail img {
+    display: block;
+    width: -webkit-fill-available;
+}
 .van-name{
     font-size:22px;
     font-weight: bold;
