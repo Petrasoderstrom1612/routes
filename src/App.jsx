@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom"; //you write {BrowserRouter as Router}
-import Home from "./pages/Home"
-import About from "./pages/About"
+import Home from "./pages/Vans/Home"
+import About from "./pages/Vans/About"
 import NotFound from "./pages/NotFound"
-import Vans from "./pages/Vans"
-import VanDetails from "./pages/VanDetails"
+import Vans from "./pages/Vans/Vans"
+import VanDetails from "./pages/Vans/VanDetails"
 import Layout from './components/Layout';
 
 function App() {
