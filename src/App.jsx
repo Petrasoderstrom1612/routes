@@ -6,6 +6,9 @@ import NotFound from "./pages/NotFound"
 import Vans from "./pages/Vans/Vans"
 import VanDetails from "./pages/Vans/VanDetails"
 import Layout from './components/Layout';
+import Dashboard from "./pages/Host/Dashboard"
+import Income from "./pages/Host/Income"
+import Reviews from "./pages/Host/Reviews"
 
 function App() {
 
@@ -19,6 +22,9 @@ function App() {
             <Route path="/vans" element={<Vans/>}/> {/* the route to the component*/}
             <Route path="/vans/:id" element={<VanDetails/>}/>
             <Route path="*" element={<NotFound/>} /> {/* path="*" Default for all non-declared path, you need to import it as component*/}
+            <Route path="/host" element={<Dashboard/>}/>
+            <Route path="/host/income" element={<Income/>}/>
+            <Route path="/host/reviews" element={<Reviews/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
