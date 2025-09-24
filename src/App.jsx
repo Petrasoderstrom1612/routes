@@ -22,9 +22,11 @@ function App() {
             <Route path="/vans" element={<Vans/>}/> {/* the route to the component*/}
             <Route path="/vans/:id" element={<VanDetails/>}/>
             <Route path="*" element={<NotFound/>} /> {/* path="*" Default for all non-declared path, you need to import it as component*/}
-            <Route path="/host" element={<Dashboard/>}/>
-            <Route path="/host/income" element={<Income/>}/>
-            <Route path="/host/reviews" element={<Reviews/>}/>
+
+            <Route path="/host" element={<Dashboard/>}> {/* this acts yet as another layout that layers on the side, you need outlet not to override the children*/}
+              <Route path="/host/income" element={<Income/>}/>
+              <Route path="/host/reviews" element={<Reviews/>}/>
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>
