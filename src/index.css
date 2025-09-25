@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-html, body {
+main {
     margin: 0;
     padding: 0;
     background-color: #FFF7ED;
@@ -262,4 +262,17 @@ i[class*='van-type-'] {
     color: #161616;
     text-decoration: underline;
     font-weight: 600;
+}
+
+/* FOOTER */
+footer {
+    background-color: #161616;
+    color: #AAAAAA;
+    height: 74px;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+    font-weight: 500;
 }
