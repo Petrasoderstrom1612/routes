@@ -11,12 +11,21 @@ main {
 }
 
 body::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 body {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    height: 100%;
+    margin: 0;
+}
+
+#root{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #FFF7ED;
 }
 
 header {
@@ -24,6 +33,7 @@ header {
     display: flex;
     align-items: center;
     padding-block: 10px;
+    background-color: #FFF;
 }
 
 header .site-logo {
