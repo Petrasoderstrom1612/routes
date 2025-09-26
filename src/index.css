@@ -77,7 +77,9 @@ header a:hover {
 /*** NAVIGATION ***/
 
 .activenav{
-    background-color: #b92f2f;
+    font-weight: bold;
+    text-decoration: underline;
+    color: #161616;
 }
 
 /*** HOME PAGE ***/
