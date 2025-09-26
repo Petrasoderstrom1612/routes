@@ -74,6 +74,12 @@ header a:hover {
     transform: translate(1px, 1px);
 }
 
+/*** NAVIGATION ***/
+
+.activenav{
+    background-color: #b92f2f;
+}
+
 /*** HOME PAGE ***/
 .home-container { /*the pretty img behind content*/
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.46), rgba(0, 0, 0, 0.46)), url("./assets/images/home-hero.jpg") no-repeat center center;
