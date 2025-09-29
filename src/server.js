@@ -29,7 +29,7 @@ export function makeServer() {
 
         this.get("/host/vans", (schema, request) => {
             // Hard-code the hostId for now
-            return schema.vans.where({ hostId: "123" })
+            return schema.vans.where({ hostId: "123" }) //this only fetches vans with hostID:"123", there are 3 of them
         })
 
         this.get("/host/vans/:id", (schema, request) => {

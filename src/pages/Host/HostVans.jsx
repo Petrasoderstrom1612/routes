@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom"
 
 const HostVans = () => {
-     const [vans, setVans] = React.useState([])
+     const [vans, setVans] = React.useState(null)
 
     React.useEffect(() => {
         fetch("/api/host/vans")
@@ -10,9 +10,10 @@ const HostVans = () => {
             .then(data => {
               console.log("important, ", data.vans)
               setVans(data.vans)})
+            .catch(() => setVans([])) //added catch if no vans data
     }, [])
 
-    const hostVansEls = vans.map(van => (
+    const hostVansEls = vans?.map(van => ( //important with ? so it does not map if null, otherwise an error is thrown
         <Link
             to={`/host/vans/${van.id}`}
             key={van.id}
@@ -29,21 +30,18 @@ const HostVans = () => {
     ))
 
     return (
-        <section>
-            <h1 className="host-vans-title">Your listed vans</h1>
-            <div className="host-vans-list">
-                {
-                    vans?.length > 0 ? (
-                        <section>
-                            {hostVansEls}
-                        </section>
-
-                    ) : (
-                            <h2>Loading...</h2>
-                        )
-                }
-            </div>
-        </section>
+      <section>
+        <h1 className="host-vans-title">Your listed vans</h1>
+        <div className="host-vans-list">
+          {vans === null ? (
+            <h2>Loading...</h2>                // still fetching
+          ) : vans.length > 0 ? (
+            <section>{hostVansEls}</section>    // has vans
+          ) : (
+            <h2>You don’t have any vans yet.</h2> // empty array 
+          )}
+        </div>
+      </section>
     )
 };
 
