@@ -36,7 +36,7 @@ export function makeServer() {
             // Hard-code the hostId for now
             const id = request.params.id
             return schema.vans.where({ id, hostId: "123" }) //this only returns the van with the corresponding id that has also matching hostId so in practise you will always get max one (as ids are unique)
-        })
+        })                    //.findBy would return an object without it being nested in an array [] so would be a better solution here
         }
     })
 }

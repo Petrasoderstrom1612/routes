@@ -8,7 +8,7 @@ const HostVans = () => {
         fetch("/api/host/vans")
             .then(res => res.json())
             .then(data => {
-              console.log("important, ", data.vans)
+              console.log("HostVans", data.vans)
               setVans(data.vans)})
             .catch(() => setVans([])) //added catch if no vans data
     }, [])
