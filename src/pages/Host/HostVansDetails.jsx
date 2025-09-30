@@ -1,5 +1,6 @@
 import React from "react";
-import {useParams} from "react-router-dom"
+import {useParams, Outlet} from "react-router-dom"
+import VanDetailsLinks from "../../components/VanDetailsLinks";
 
 const HostVansDetails = () => {
   const { id } = useParams() //destructuring object, without curlies params.id
@@ -20,13 +21,15 @@ const HostVansDetails = () => {
       <h1>Loading...</h1>
     )
   }
-  
+
   return (
     <div>
         <img src={hostVan.imageUrl} width={150} />
         <h2>{hostVan.name}</h2>
         <p>{hostVan.price}</p>
         <p>{hostVan.type}</p>
+        <VanDetailsLinks/>
+        <Outlet/>
     </div>
   );
 };

@@ -4,7 +4,7 @@ import Home from "./pages/Vans/Home"
 import About from "./pages/Vans/About"
 import NotFound from "./pages/NotFound"
 import Vans from "./pages/Vans/Vans"
-import VanDetails from "./pages/Vans/VanDetails"
+import VanDetailsLayout from "./components/VanDetailsLayout"
 import Layout from './components/Layout';
 import HostLayout from './components/HostLayout';
 import Dashboard from "./pages/Host/Dashboard"
@@ -12,6 +12,7 @@ import Income from "./pages/Host/Income"
 import Reviews from "./pages/Host/Reviews"
 import HostVans from "./pages/Host/HostVans"
 import HostVansDetails from "./pages/Host/HostVansDetails"
+import Details from "./pages/Host/Details"
 
 
 function App() {
@@ -33,7 +34,9 @@ function App() {
 
             <Route path="about" element={<About/>}/>
             <Route path="vans" element={<Vans/>}/> {/* the route to the component*/}
-            <Route path="vans/:id" element={<VanDetails/>}/>
+            <Route path="vans/:id" element={<VanDetailsLayout/>}>
+              <Route path="details" element={<Details/>}/>
+            </Route>
             <Route path="*" element={<NotFound/>} /> {/* path="*" Default for all non-declared path, you need to import it as component*/}
 
           </Route>
