@@ -28,15 +28,15 @@ function App() {
               <Route path="income" element={<Income/>}/>
               <Route path="reviews" element={<Reviews/>}/>
               <Route path="vans" element={<HostVans/>}/>
-              <Route path="vans/:id" element={<HostVansDetails/>}/>
+              <Route path="vans/:id" element={<HostVansDetails/>}>
+                <Route path="details" element={<Details/>}/>
+              </Route>
               <Route index element={<Dashboard />} />
             </Route>
 
             <Route path="about" element={<About/>}/>
             <Route path="vans" element={<Vans/>}/> {/* the route to the component*/}
-            <Route path="vans/:id" element={<VanDetailsLayout/>}>
-              <Route path="details" element={<Details/>}/>
-            </Route>
+            <Route path="vans/:id" element={<VanDetailsLayout/>}/>
             <Route path="*" element={<NotFound/>} /> {/* path="*" Default for all non-declared path, you need to import it as component*/}
 
           </Route>
