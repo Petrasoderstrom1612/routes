@@ -15,7 +15,7 @@ const HostVans = () => {
 
     const hostVansEls = vans?.map(van => ( //important with ? so it does not map if null, otherwise an error is thrown
         <Link
-            to={`/host/vans/${van.id}`}
+            to={`/host/hostvans/${van.id}`}
             key={van.id}
             className="host-van-link-wrapper"
         >
