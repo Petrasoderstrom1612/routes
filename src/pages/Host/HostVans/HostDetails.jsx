@@ -1,10 +1,15 @@
 import React from 'react'
+import { useOutletContext } from "react-router-dom"
 
 const HostDetails = () => {
-  console.log("Rendering HostDetails")
+  const { hostVan } = useOutletContext() //accept state from parent
+  console.log(hostVan)
   return (
     <div>
-      Details - host description
+        <h2>{hostVan.name}</h2>
+        <p>Category: {hostVan.type}</p>
+        <p>Description: {hostVan.price}</p>
+        <p>Visibility: {hostVan.type === "simple" ? "public" : "private"}</p>
     </div>
   )
 }

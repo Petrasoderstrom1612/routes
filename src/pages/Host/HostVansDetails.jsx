@@ -29,7 +29,7 @@ const HostVansDetails = () => {
         <p>{hostVan.price}</p>
         <p>{hostVan.type}</p>
         <VanDetailsLinks/>
-        <Outlet/>
+        <Outlet context={{ hostVan }} /> {/*pass state to the child*/}
     </div>
   );
 };
