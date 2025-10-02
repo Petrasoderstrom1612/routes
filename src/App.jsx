@@ -14,6 +14,7 @@ import HostVans from "./pages/Host/HostVans"
 import HostVansDetails from "./pages/Host/HostVansDetails"
 import HostDetails from "./pages/Host/HostDetails"
 import HostPricing from "./pages/Host/HostPricing"
+import HostPhotos from "./pages/Host/HostPhotos"
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
               <Route path="hostvans/:id" element={<HostVansDetails/>}>
                 <Route path="details" element={<HostDetails/>}/>
                 <Route path="pricing" element={<HostPricing/>}/>
+                <Route path="photos" element={<HostPhotos/>}/>
               </Route>
               <Route index element={<Dashboard />} />
             </Route>
