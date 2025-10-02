@@ -1,6 +1,6 @@
 import { NavLink} from "react-router-dom";
 
-const Header = () => {
+const HeaderLinks = () => {
   return (
     <header>
       <NavLink to="/" className={({isActive}) => isActive ? "activenav site-logo" : "site-logo"}>#VanLife</NavLink>
@@ -13,5 +13,5 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HeaderLinks;
 
