@@ -32,7 +32,7 @@ function App() {
               <Route path="reviews" element={<Reviews/>}/>
               <Route path="hostvans" element={<HostVans/>}/>  {/*not a parent as it does not share any UI with hostvans/:id*/}
               <Route path="hostvans/:id" element={<HostVansDetails/>}>
-                <Route path="details" element={<HostDetails/>}/>
+                <Route index element={<HostDetails/>}/>
                 <Route path="pricing" element={<HostPricing/>}/>
                 <Route path="photos" element={<HostPhotos/>}/>
               </Route>
