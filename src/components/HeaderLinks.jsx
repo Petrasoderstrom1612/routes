@@ -5,9 +5,9 @@ const HeaderLinks = () => {
     <header>
       <NavLink to="/" className={({isActive}) => isActive ? "activenav site-logo" : "site-logo"}>#VanLife</NavLink>
       <nav>
-        <NavLink to="/host" className={({isActive}) => isActive ? "activenav" : null}>Host</NavLink>
-        <NavLink to="/about" className={({isActive}) => isActive ? "activenav" : null}>About</NavLink>
-        <NavLink to="/vans" className={({isActive}) => isActive ? "activenav" : null}>Vans</NavLink>
+        <NavLink to="host" className={({isActive}) => isActive ? "activenav" : null}>Host</NavLink>
+        <NavLink to="about" className={({isActive}) => isActive ? "activenav" : null}>About</NavLink>
+        <NavLink to="vans" className={({isActive}) => isActive ? "activenav" : null}>Vans</NavLink>
       </nav>
     </header>
   );
