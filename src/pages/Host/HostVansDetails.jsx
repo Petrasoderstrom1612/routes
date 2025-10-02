@@ -1,5 +1,5 @@
 import React from "react";
-import {useParams, Outlet} from "react-router-dom"
+import {useParams, Outlet, Link} from "react-router-dom"
 import VanDetailsLinks from "../../components/VanDetailsLinks";
 
 const HostVansDetails = () => { //one individual van
@@ -23,14 +23,22 @@ const HostVansDetails = () => { //one individual van
   }
 
   return (
-    <div>
-        <img src={hostVan.imageUrl} width={150} />
-        <h2>{hostVan.name}</h2>
-        <p>{hostVan.price}</p>
-        <p>{hostVan.type}</p>
+    <section>
+      <Link to=".." relative="path" className="back-button">&larr; <span>Back to all vans</span></Link> {/* Link back to the all hostvans */}
+            <div className="host-van-detail-layout-container">
+                <div className="host-van-detail">
+                    <img src={hostVan.imageUrl} alt={`${hostVan.name}`}/>
+                    <div className="host-van-detail-info-text">
+                      <label className={`van-type van-type-${hostVan.type}`}>{hostVan.type}</label>
+                      <h3>{hostVan.name}</h3>
+                      <h4>${hostVan.price}/day</h4>
+                    </div>
+                </div>
+
         <VanDetailsLinks/>
         <Outlet context={{ hostVan }} /> {/*pass state to the child*/}
-    </div>
+        </div>
+    </section>
   );
 };
 
