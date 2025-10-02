@@ -12,9 +12,9 @@ import Income from "./pages/Host/Income"
 import Reviews from "./pages/Host/Reviews"
 import HostVans from "./pages/Host/HostVans"
 import HostVansDetails from "./pages/Host/HostVansDetails"
-import HostDetails from "./pages/Host/HostDetails"
-import HostPricing from "./pages/Host/HostPricing"
-import HostPhotos from "./pages/Host/HostPhotos"
+import HostDetails from "./pages/Host/HostVans/HostDetails"
+import HostPricing from "./pages/Host/HostVans/HostPricing"
+import HostPhotos from "./pages/Host/HostVans/HostPhotos"
 
 
 function App() {
