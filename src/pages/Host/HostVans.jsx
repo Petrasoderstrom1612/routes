@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom"
 
-const HostVans = () => {
+const HostVans = () => { //all vans
      const [vans, setVans] = React.useState(null)
 
     React.useEffect(() => {
