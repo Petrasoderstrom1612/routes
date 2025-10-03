@@ -4,7 +4,7 @@ import { NavLink, Outlet } from "react-router-dom";
 const VanDetailsLinks = () => {
   return (
       <nav className="host-nav">
-        <NavLink to="." className={({isActive}) => isActive ? "activenav" : null}>Details</NavLink>
+        <NavLink to="." end className={({isActive}) => isActive ? "activenav" : null}>Details</NavLink>
         <NavLink to="pricing" className={({isActive}) => isActive ? "activenav" : null}>Pricing</NavLink>
         <NavLink to="photos" className={({isActive}) => isActive ? "activenav" : null}>Photos</NavLink>
       </nav>
