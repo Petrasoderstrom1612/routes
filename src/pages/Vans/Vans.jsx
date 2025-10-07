@@ -1,8 +1,15 @@
 import React from 'react'
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 const Vans = () => {
     const [vans, setVans] = React.useState([])
+    const [searchParams, setSearchParams] = useSearchParams()
+
+    console.log(searchParams)
+    const typeParam = searchParams.get("type")
+    console.log("type",typeParam)
+
+    const possiblityTypeFilteredVans = typeParam ? vans.filter(oneVan => oneVan.type === typeParam) : vans
 
     React.useEffect(()=>{
         fetch("/api/vans")
@@ -13,7 +20,7 @@ const Vans = () => {
         })
     },[])
 
-    const vansCards = vans.map(oneVan =>               //great way to declare to screen reader what the link is about, it will skip reading each element in it and only read the aria-label
+    const vansCards = possiblityTypeFilteredVans.map(oneVan =>               //great way to declare to screen reader what the link is about, it will skip reading each element in it and only read the aria-label
         <Link to={`/vans/${oneVan.id}`} key={oneVan.id} aria-label={`View details for ${oneVan.name}, priced at ${oneVan.price} per day`} className="van-link">
             <div className="van-tile">
                 <img src={oneVan.imageUrl} alt={oneVan.name}/>
