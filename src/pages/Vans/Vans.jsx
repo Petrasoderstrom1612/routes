@@ -1,15 +1,15 @@
 import React from 'react'
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom"; //establish connection to parameters in url
 
 const Vans = () => {
     const [vans, setVans] = React.useState([])
-    const [searchParams, setSearchParams] = useSearchParams()
+    const [searchParams, setSearchParams] = useSearchParams() //establish connection to parameters in url
 
     console.log(searchParams)
-    const typeParam = searchParams.get("type")
+    const typeParam = searchParams.get("type") //variable for url search with parameter type
     console.log("type",typeParam)
 
-    const possiblityTypeFilteredVans = typeParam ? vans.filter(oneVan => oneVan.type === typeParam) : vans
+    const possiblityTypeFilteredVans = typeParam ? vans.filter(oneVan => oneVan.type === typeParam) : vans //if url parameter used, filter state based on its object property .vans
 
     React.useEffect(()=>{
         fetch("/api/vans")
@@ -19,7 +19,7 @@ const Vans = () => {
             setVans(data.vans)
         })
     },[])
-
+                       
     const vansCards = possiblityTypeFilteredVans.map(oneVan =>               //great way to declare to screen reader what the link is about, it will skip reading each element in it and only read the aria-label
         <Link to={`/vans/${oneVan.id}`} key={oneVan.id} aria-label={`View details for ${oneVan.name}, priced at ${oneVan.price} per day`} className="van-link">
             <div className="van-tile">
