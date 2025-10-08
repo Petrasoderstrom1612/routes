@@ -172,7 +172,8 @@ header a:hover {
 .van-link{
     text-decoration: none !important;  
     color:black;
-    /* background-color: white;; */
+    justify-content: space-between;
+    display: flex;
 }
 
 .van-list {
@@ -652,4 +653,41 @@ label:hover{
 .host-van-detail-info-text > h4 {
     font-size: 20px;
     margin-block: 0;
+}
+
+/***FILTERS***/
+.van-list-filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.van-type{
+    text-decoration: none;
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
+
+}
+
+.van-type:hover {
+    color: #FFEAD0;
+}
+
+.van-type:focus {
+    outline: none;
+}
+
+.van-type.selected {
+    color: #FFEAD0;
+}
+
+.van-type.simple:hover, .van-type.simple.selected {
+    background-color: #E17654;
+}
+
+.van-type.rugged:hover, .van-type.rugged.selected {
+    background-color: #115E59;
+}
+
+.van-type.luxury:hover, .van-type.luxury.selected {
+    background-color: #161616;
 }
