@@ -48,9 +48,9 @@ const Vans = () => {
     <div className="van-list-container">
         <h1>Explore our van options</h1>
         <div className="van-list-filter-buttons">
-            <button onClick={() => adjustOneParameterType("type","simple")} className="van-type simple">simple</button>
-            <button onClick={() => adjustOneParameterType("type","rugged")} className="van-type rugged">rugged</button>
-            <button onClick={() => adjustOneParameterType("type","luxury")} className="van-type luxury">luxury</button>
+            <button onClick={() => adjustOneParameterType("type","rugged")} className={`van-type rugged ${typeParam === "rugged"? "selected" : undefined}`}>rugged</button>
+            <button onClick={() => adjustOneParameterType("type","luxury")} className={`van-type luxury ${typeParam === "luxury"? "selected" : undefined}`}>luxury</button>
+            <button onClick={() => adjustOneParameterType("type","simple")} className={`van-type simple ${typeParam === "simple"? "selected" : undefined}`}>simple</button>
             {typeParam && <button onClick={() => adjustOneParameterType("type", null)} className="van-type clear-filters">Clear filters</button>} {/* display button only when there is a search parameter*/}
         </div>
         <div className="van-list">

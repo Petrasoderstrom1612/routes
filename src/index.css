@@ -262,6 +262,10 @@ header a:hover {
     color: #4D4D4D;
 }
 
+.clear-filters:hover{
+    color:#4D4D4D !important;
+}
+
 i[class*='van-type-'] {
     padding: 7px 14px;
 }
@@ -676,8 +680,17 @@ label:hover{
     outline: none;
 }
 
-.van-type.selected {
+.van-type.rugged.selected {
     color: #FFEAD0;
+    background-color: #E17654;
+}
+.van-type.luxury.selected {
+    color: #FFEAD0;
+    background-color: #161616;
+}
+.van-type.simple.selected {
+    color: #FFEAD0;
+    background-color: #115E59;
 }
 
 .van-type.simple:hover, .van-type.simple.selected {
