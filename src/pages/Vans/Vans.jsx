@@ -21,7 +21,7 @@ const Vans = () => {
     },[])
                        
     const vansCards = possiblyTypeFilteredVans.map(oneVan =>               //great way to declare to screen reader what the link is about, it will skip reading each element in it and only read the aria-label
-        <Link to={`/vans/${oneVan.id}`} key={oneVan.id} aria-label={`View details for ${oneVan.name}, priced at ${oneVan.price} per day`} className="van-link">
+        <Link to={oneVan.id} key={oneVan.id} aria-label={`View details for ${oneVan.name}, priced at ${oneVan.price} per day`} className="van-link">
             <div className="van-tile">
                 <img src={oneVan.imageUrl} alt={oneVan.name}/>
                 <div className="van-info">
