@@ -35,7 +35,7 @@ const Vans = () => {
 
         const adjustOneParameterType = (key, value) => { //fnc to add only one parameter on button click to URL
             setSearchParams(prevParams => {
-                if (prevParams === null){
+                if (value === null){ //no value
                     prevParams.delete(key)
                 } else {
                     prevParams.set(key, value)
@@ -51,7 +51,7 @@ const Vans = () => {
             <button onClick={() => adjustOneParameterType("type","simple")} className="van-type simple">simple</button>
             <button onClick={() => adjustOneParameterType("type","rugged")} className="van-type rugged">rugged</button>
             <button onClick={() => adjustOneParameterType("type","luxury")} className="van-type luxury">luxury</button>
-            <button onClick={() => adjustOneParameterType("type",null)} className="van-type clear-filters">Clear filters</button>
+            {typeParam && <button onClick={() => adjustOneParameterType("type", null)} className="van-type clear-filters">Clear filters</button>}
         </div>
         <div className="van-list">
             {vansCards}
