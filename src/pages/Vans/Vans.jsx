@@ -33,14 +33,25 @@ const Vans = () => {
         </Link>
         )
 
+        const adjustOneParameterType = (key, value) => { //fnc to add only one parameter at button click to URL
+            setSearchParams(prevParams => {
+                if (prevParams === null){
+                    prevParams.delete(key)
+                } else {
+                    prevParams.set(key, value)
+                }
+                return prevParams
+            })
+        }
+
   return (
     <div className="van-list-container">
         <h1>Explore our van options</h1>
         <div className="van-list-filter-buttons">
-            <Link to="?type=simple" className="van-type simple">simple</Link>
-            <Link to="?type=rugged" className="van-type rugged">rugged</Link>
-            <Link to="?type=luxury" className="van-type luxury">luxury</Link>
-            <Link to="." className="van-type clear-filters">Clear filters</Link>
+            <button onClick={() => adjustOneParameterType("type","simple")} className="van-type simple">simple</button>
+            <button onClick={() => adjustOneParameterType("type","rugged")} className="van-type rugged">rugged</button>
+            <button onClick={() => adjustOneParameterType("type","luxury")} className="van-type luxury">luxury</button>
+            <button onClick={() => adjustOneParameterType("type",null)} className="van-type clear-filters">Clear filters</button>
         </div>
         <div className="van-list">
             {vansCards}
@@ -50,3 +61,7 @@ const Vans = () => {
 }
 
 export default Vans
+{/* <Link to="?type=simple" className="van-type simple">simple</Link>
+<Link to="?type=rugged" className="van-type rugged">rugged</Link>
+<Link to="?type=luxury" className="van-type luxury">luxury</Link>
+<Link to="." className="van-type clear-filters">Clear filters</Link> */}
