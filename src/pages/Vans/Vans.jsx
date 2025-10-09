@@ -51,7 +51,7 @@ const Vans = () => {
             <button onClick={() => adjustOneParameterType("type","simple")} className="van-type simple">simple</button>
             <button onClick={() => adjustOneParameterType("type","rugged")} className="van-type rugged">rugged</button>
             <button onClick={() => adjustOneParameterType("type","luxury")} className="van-type luxury">luxury</button>
-            {typeParam && <button onClick={() => adjustOneParameterType("type", null)} className="van-type clear-filters">Clear filters</button>}
+            {typeParam && <button onClick={() => adjustOneParameterType("type", null)} className="van-type clear-filters">Clear filters</button>} {/* display button only when there is a search parameter*/}
         </div>
         <div className="van-list">
             {vansCards}
