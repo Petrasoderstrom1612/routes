@@ -33,7 +33,7 @@ const Vans = () => {
         </Link>
         )
 
-        const adjustOneParameterType = (key, value) => { //fnc to add only one parameter at button click to URL
+        const adjustOneParameterType = (key, value) => { //fnc to add only one parameter on button click to URL
             setSearchParams(prevParams => {
                 if (prevParams === null){
                     prevParams.delete(key)
