@@ -29,8 +29,8 @@ function App() {
             <Route path="host" element={<HostLayout/>}> {/* this acts yet as another layout that layers on the side, you need outlet not to override the children*/}
               <Route index element={<Dashboard />} />
               <Route path="income" element={<Income/>}/>
-              <Route path="hostvans" element={<HostVans/>}/>  {/*not a parent as it does not share any UI with hostvans/:id*/}
-              <Route path="hostvans/:id" element={<HostVansDetails/>}>
+              <Route path="hostvans" element={<HostVans/>}/> 
+              <Route path="hostvans/:id" element={<HostVansDetails/>}> {/*page & Layout*/}
                 <Route index element={<HostDetails/>}/>
                 <Route path="pricing" element={<HostPricing/>}/>
                 <Route path="photos" element={<HostPhotos/>}/>
