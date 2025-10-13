@@ -2,7 +2,7 @@ import React from "react";
 import {useParams, Outlet, Link} from "react-router-dom"
 import VanDetailsLinks from "../../components/VanDetailsLinks";
 
-const HostVansDetails = () => { //one individual van
+const HostVansDetails = () => { //one individual van and Layout
   const { id } = useParams() //destructuring object, without curlies params.id
   const [hostVan, setHostVan] = React.useState(null)
 
