@@ -5,9 +5,9 @@ const Vans = () => {
     const [vans, setVans] = React.useState([])
     const [searchParams, setSearchParams] = useSearchParams() //establish connection to parameters in url
 
-    console.log(searchParams)
     const typeParam = searchParams.get("type") //variable for url search with parameter type
     console.log("type",typeParam)
+    // const queryString = searchParams.toString() //all search filters in the URL
 
     const possiblyTypeFilteredVans = typeParam ? vans.filter(oneVan => oneVan.type === typeParam) : vans //if url parameter used, filter state based on its object property .vans
 
@@ -21,7 +21,7 @@ const Vans = () => {
     },[])
                        
     const vansCards = possiblyTypeFilteredVans.map(oneVan =>               //great way to declare to screen reader what the link is about, it will skip reading each element in it and only read the aria-label
-        <Link to={oneVan.id} key={oneVan.id} aria-label={`View details for ${oneVan.name}, priced at ${oneVan.price} per day`} className="van-link">
+        <Link to={oneVan.id} key={oneVan.id} state={{queryString: searchParams.toString()}} aria-label={`View details for ${oneVan.name}, priced at ${oneVan.price} per day`} className="van-link">
             <div className="van-tile">
                 <img src={oneVan.imageUrl} alt={oneVan.name}/>
                 <div className="van-info">
