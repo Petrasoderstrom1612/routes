@@ -4,7 +4,7 @@ import Home from "./pages/Home/Home"
 import About from "./pages/About/About"
 import NotFound from "./pages/NotFound"
 import Vans from "./pages/Vans/Vans"
-import VanDetails from "./components/VanDetails"
+import VanDetails from "./pages/Vans/VanDetails"
 import Layout from './components/Layout';
 import HostLayout from './components/HostLayout';
 import Dashboard from "./pages/Host/Dashboard"
