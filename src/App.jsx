@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom"; //you write {BrowserRouter as Router}
-import Home from "./pages/Vans/Home"
-import About from "./pages/Vans/About"
+import Home from "./pages/Home/Home"
+import About from "./pages/About/About"
 import NotFound from "./pages/NotFound"
 import Vans from "./pages/Vans/Vans"
-import VanDetailsLayout from "./components/VanDetailsLayout"
+import VanDetails from "./components/VanDetails"
 import Layout from './components/Layout';
 import HostLayout from './components/HostLayout';
 import Dashboard from "./pages/Host/Dashboard"
@@ -40,7 +40,7 @@ function App() {
 
             <Route path="about" element={<About/>}/>
             <Route path="vans" element={<Vans/>}/> {/* the route to the component*/}
-            <Route path="vans/:id" element={<VanDetailsLayout/>}/>
+            <Route path="vans/:id" element={<VanDetails/>}/>
             <Route path="*" element={<NotFound/>} /> {/* path="*" Default for all non-declared path, you need to import it as component*/}
 
           </Route>
