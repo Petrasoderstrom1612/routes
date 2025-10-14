@@ -10,6 +10,8 @@ const VanDetails = () => {
   let location = useLocation() //{pathname: '/vans/2', search: '', hash: '', state: {queryString: 'type=rugged'}, key: 'f13k8zss'}
   console.log(location.state.queryString) 
   const queryString = location.state?.queryString || "" //or location.state && location.state.queryString ;state must be present!
+  const type =  location.state.typeParam ? location.state.typeParam : "all" //same logic as on row above
+  console.log(type, "type")
 
   const [vanInfo, setVanInfo] = React.useState(null)
 
@@ -24,7 +26,7 @@ const VanDetails = () => {
 
   return (
     <>                        {/*relative so it does not go to parent*/}
-    <Link to={`..?${queryString}`} relative="path" className="back-button">&larr; Back to all vans</Link>
+    <Link to={`..?${queryString}`} relative="path" className="back-button">&larr; Back to {type} vans</Link>
     <div className="van-detail-container"> {/*Handle situation if no id is available, fetch returns null */}
       {vanInfo ? (
         <div className="van-detail">
