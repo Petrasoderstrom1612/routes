@@ -1,13 +1,16 @@
 import React from 'react'
 import { Link, useSearchParams } from "react-router-dom"; //establish connection to parameters in url
 
+
 const Vans = () => {
     const [vans, setVans] = React.useState([])
     const [searchParams, setSearchParams] = useSearchParams() //establish connection to parameters in url
+    const queryString = searchParams.toString() //all search filters in the URL as string
+ 
 
     const typeParam = searchParams.get("type") //variable for url search with parameter type
     console.log("type",typeParam)
-    // const queryString = searchParams.toString() //all search filters in the URL
+    
 
     const possiblyTypeFilteredVans = typeParam ? vans.filter(oneVan => oneVan.type === typeParam) : vans //if url parameter used, filter state based on its object property .vans
 
@@ -19,9 +22,9 @@ const Vans = () => {
             setVans(data.vans)
         })
     },[])
-                       
-    const vansCards = possiblyTypeFilteredVans.map(oneVan =>               //great way to declare to screen reader what the link is about, it will skip reading each element in it and only read the aria-label
-        <Link to={oneVan.id} key={oneVan.id} state={{queryString: searchParams.toString()}} aria-label={`View details for ${oneVan.name}, priced at ${oneVan.price} per day`} className="van-link">
+                                               //obj key and value are the same state={{ queryString: queryString }}
+    const vansCards = possiblyTypeFilteredVans.map(oneVan =>        //great way to declare to screen reader what the link is about, it will skip reading each element in it and only read the aria-label
+        <Link to={oneVan.id} key={oneVan.id} state={{queryString}} aria-label={`View details for ${oneVan.name}, priced at ${oneVan.price} per day`} className="van-link">
             <div className="van-tile">
                 <img src={oneVan.imageUrl} alt={oneVan.name}/>
                 <div className="van-info">

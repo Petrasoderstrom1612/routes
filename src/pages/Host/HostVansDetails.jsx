@@ -36,7 +36,7 @@ const HostVansDetails = () => { //one individual van and Layout
                 </div>
 
         <VanDetailsLinks/>
-        <Outlet context={{ hostVan }} /> {/*pass state to the child*/}
+        <Outlet context={{ hostVan }} /> {/*pass state to the child (array destructuring)*/}
         </div>
     </section>
   );

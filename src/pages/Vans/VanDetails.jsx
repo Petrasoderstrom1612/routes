@@ -1,9 +1,12 @@
 import React from 'react'
-import {useParams} from "react-router-dom"
+import {useLocation} from "react-router-dom"
+
 
 const VanDetails = () => {
   const params = useParams()
   console.log("params",params) //du måste gå på sidan för att se console.loggen
+  const { queryString } = useLocation().state //"type=luxury"
+  console.log("state", queryString) //"type=luxury"
 
   const [vanInfo, setVanInfo] = React.useState(null)
 
