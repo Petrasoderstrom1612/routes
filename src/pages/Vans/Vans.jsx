@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useSearchParams } from "react-router-dom"; //establish connection to parameters in url
-
+import {getVans} from "../../apis/apiVans"
 
 const Vans = () => {
     const [vans, setVans] = React.useState([])
@@ -15,12 +15,12 @@ const Vans = () => {
     const possiblyTypeFilteredVans = typeParam ? vans.filter(oneVan => oneVan.type === typeParam) : vans //if url parameter used, filter state based on its object property .vans
 
     React.useEffect(()=>{
-        fetch("/api/vans")
-        .then(res => res.json())
-        .then(data => {
-            console.log("vans array", data.vans)
+        const loadVans = async () => {
+            const data = await getVans()
             setVans(data.vans)
-        })
+        }
+
+        loadVans()
     },[])
                                                //obj key and value are the same state={{ queryString: queryString }}
     const vansCards = possiblyTypeFilteredVans.map(oneVan =>        //great way to declare to screen reader what the link is about, it will skip reading each element in it and only read the aria-label
