@@ -1,4 +1,4 @@
-import { createServer, Model } from "miragejs" //package that imitates an API behavior
+import { createServer, Model, Response } from "miragejs" //package that imitates an API behavior
 
 export function makeServer() {
     createServer({
@@ -19,7 +19,8 @@ export function makeServer() {
             this.namespace = "api"
 
         this.get("/vans", (schema, request) => {
-            return schema.vans.all()
+            return new Response(400, {}, {error: "Error fetching data"}) //SAD PATH - no data fetched
+            //return schema.vans.all()
         })
 
         this.get("/vans/:id", (schema, request) => {
