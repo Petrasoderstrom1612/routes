@@ -30,8 +30,8 @@ export function makeServer() {
 
         this.get("/host/vans", (schema) => {
             // Hard-code the hostId for now
-            // return schema.vans.where({ hostId: "123" }) //this only fetches vans with hostID:"123", there are 3 of them
-            return new Response(400, {}, {error: "Error fetching data"}) //SAD PATH - no data fetched
+            return schema.vans.where({ hostId: "123" }) //this only fetches vans with hostID:"123", there are 3 of them
+            //return new Response(400, {}, {error: "Error fetching data"}) //SAD PATH - no data fetched
         })
 
         this.get("/host/vans/:id", (schema, request) => {
