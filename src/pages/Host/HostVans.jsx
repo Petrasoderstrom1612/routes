@@ -1,16 +1,21 @@
 import React from "react";
 import {Link} from "react-router-dom"
+import {getHostVans} from "../../apis/apiVans"
 
 const HostVans = () => { //all vans
      const [vans, setVans] = React.useState(null)
+     const [err, setErr] = React.useState(null)
 
     React.useEffect(() => {
-        fetch("/api/host/vans")
-            .then(res => res.json())
-            .then(data => {
-              console.log("HostVans", data.vans)
-              setVans(data.vans)})
-            .catch(() => setVans([])) //added catch if no vans data
+      const loadData = async() => {
+        try{
+            const data = await getHostVans()
+            setVans(data.vans)
+          } catch(error) {
+            setErr(error)
+          } 
+      }
+      loadData()
     }, [])
 
     const hostVansEls = vans?.map(van => ( //important with ? so it does not map if null, otherwise an error is thrown
@@ -33,13 +38,14 @@ const HostVans = () => { //all vans
       <section>
         <h1 className="host-vans-title">Your listed vans</h1>
         <div className="host-vans-list">
-          {vans === null ? (
+          { err ?(
+           <h2>{err.message}</h2>
+          ) : vans === null ? (
             <h2>Loading...</h2>                // still fetching
-          ) : vans.length > 0 ? (
+          ) : vans?.length > 0 ? (
             <section>{hostVansEls}</section>    // has vans
-          ) : (
-            <h2>You don’t have any vans yet.</h2> // empty array 
-          )}
+          ) :   <h2>You don’t have any vans yet.</h2> // empty array 
+        }
         </div>
       </section>
     )

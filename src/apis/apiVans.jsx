@@ -17,15 +17,15 @@ export const getVans = async () => {
         // .then(data => data.vans)
 
 export const getHostVans = async () => {
-    const res = fetch("/api/host/vans")
+    const res = await fetch("/api/host/vans")
     if(!res.ok){
         throw{
             status: res.status,
-            statusText: (await res).statusText,
+            statusText: res.statusText,
             message: "failed to fetch host vans"
         }
     }
-    const data = res.json()
+    const data = await res.json()
     return data
 }
 
