@@ -12,7 +12,7 @@ const Vans = () => {
     console.log("type",typeParam)
     
 
-    const possiblyTypeFilteredVans = typeParam ? vans.filter(oneVan => oneVan.type === typeParam) : vans //if url parameter used, filter state based on its object property .vans
+    const possiblyTypeFilteredVans = typeParam ? (vans || []).filter(oneVan => oneVan.type === typeParam) : vans //if url parameter used, filter state based on its object property .vans
 
     React.useEffect(()=>{
         const loadVans = async () => {
