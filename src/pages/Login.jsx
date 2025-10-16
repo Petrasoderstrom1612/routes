@@ -2,14 +2,27 @@ import React from 'react'
 
 const Login = () => {
     const [loginFormData, setLoginFormData] = React.useState({email: "", password:""})
-        
-        const handleSubmit = (e) => {
-            e.preventDefault()
-            const formData = new FormData(e.target)
-            const data = Object.fromEntries(formData)
-            setLoginFormData(data)
-            console.log(data)
-        }
+    
+    // function handleSubmit(e) {
+    //     e.preventDefault()
+    //     console.log(loginFormData)
+    // }
+
+    // function handleChange(e) {
+    //     const { name, value } = e.target
+    //     setLoginFormData(prev => ({
+    //         ...prev,
+    //         [name]: value
+    //     }))
+    // }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const formData = new FormData(e.target)
+        const data = Object.fromEntries(formData)
+        setLoginFormData(data)
+        console.log(data)
+    }
     
   return (
     <div className="login-container">
