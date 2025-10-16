@@ -58,11 +58,11 @@ const Vans = () => {
     }
 
     if(loading){
-        return <h1>Loading...</h1>
+        return <h1 aria-live="polite">Loading...</h1>
     }
 
     if(error){
-        return <h1>{error.message}</h1>
+        return <h1 aria-live="assertive">{error.message}</h1>
     }
         
   return (
