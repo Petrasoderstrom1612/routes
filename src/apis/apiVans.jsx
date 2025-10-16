@@ -15,3 +15,23 @@ export const getVans = async () => {
         // fetch("/api/vans")
         // .then(res => res.json())
         // .then(data => data.vans)
+
+export const getHostVans = async () => {
+    const res = fetch("/api/host/vans")
+    if(!res.ok){
+        throw{
+            status: res.status,
+            statusText: (await res).statusText,
+            message: "failed to fetch host vans"
+        }
+    }
+    const data = res.json()
+    return data
+}
+
+//fetch("/api/host/vans")
+//.then(res => res.json())
+//.then(data => {
+//  console.log("HostVans", data.vans)
+//  setVans(data.vans)})
+//.catch(() => setVans([])) //added catch if no vans data
