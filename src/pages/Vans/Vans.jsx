@@ -4,6 +4,8 @@ import {getVans} from "../../apis/apiVans"
 
 const Vans = () => {
     const [vans, setVans] = React.useState([])
+    const [error, setError] = React.useState(null)
+    const [loading, setLoading] = React.useState(false)
     const [searchParams, setSearchParams] = useSearchParams() //establish connection to parameters in url
     const queryString = searchParams.toString() //all search filters in the URL as string
  
@@ -16,8 +18,16 @@ const Vans = () => {
 
     React.useEffect(()=>{
         const loadVans = async () => {
-            const data = await getVans()
-            setVans(data.vans)
+                setLoading(true)
+            try{
+                const data = await getVans()
+                setVans(data.vans)
+            } catch (err){
+                setError(err)
+                console.log(err)
+            } finally {
+                setLoading(false)
+            }
         }
 
         loadVans()
@@ -36,17 +46,25 @@ const Vans = () => {
         </Link>
         )
 
-        const adjustOneParameterType = (key, value) => { //fnc to add only one parameter on button click to URL
-            setSearchParams(prevParams => {
-                if (value === null){ //no value
-                    prevParams.delete(key)
-                } else {
-                    prevParams.set(key, value)
-                }
-                return prevParams
-            })
-        }
+    const adjustOneParameterType = (key, value) => { //fnc to add only one parameter on button click to URL
+        setSearchParams(prevParams => {
+            if (value === null){ //no value
+                prevParams.delete(key)
+            } else {
+                prevParams.set(key, value)
+            }
+            return prevParams
+        })
+    }
 
+    if(loading){
+        return <h1>Loading...</h1>
+    }
+
+    if(error){
+        return <h1>{error.message}</h1>
+    }
+        
   return (
     <div className="van-list-container">
         <h1>Explore our van options</h1>
