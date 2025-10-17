@@ -20,7 +20,7 @@ const Vans = () => {
         const loadVans = async () => {
                 setLoading(true)
             try{
-                const data = await getVans()
+                const data = await getVans() //the connection to the API
                 setVans(data.vans)
             } catch (err){
                 setError(err)
