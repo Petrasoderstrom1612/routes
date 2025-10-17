@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom"
-import {getHostVans} from "../../apis/apiVans"
+import {getHostVans} from "../../apiVans"
 
 const HostVans = () => { //all vans
      const [vans, setVans] = React.useState(null)

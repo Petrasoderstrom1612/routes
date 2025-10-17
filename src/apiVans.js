@@ -36,3 +36,23 @@ export const getHostVans = async () => {
 //  console.log("HostVans", data.vans)
 //  setVans(data.vans)})
 //.catch(() => setVans([])) //added catch if no vans data
+
+export const getVanDetails = async (paramsId) => {
+    const res = await fetch(`/api/vans/${paramsId}`)
+    if (!res.ok){
+        throw {
+            status: res.status,
+            statusText: res.statusText,
+            message: "failed to fetch van details"
+        }
+    }
+    const data = await res.json()
+    return data
+}
+
+    // fetch(`/api/vans/${params.id}`)
+    // .then(res => res.json())
+    // .then(data => {
+    //   console.log("specific van",data)
+    //   setVanInfo(data.vans)
+    // })

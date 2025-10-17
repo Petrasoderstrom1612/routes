@@ -5,6 +5,7 @@ import {useParams, useLocation, Link} from "react-router-dom"
 const VanDetails = () => {
   const params = useParams()
   console.log("params",params) //du måste gå på sidan för att se console.loggen
+  const [error, setError] = React.useState(null)
 
  //const { queryString } = useLocation().state || {} //"type=luxury" {} means undefined but you can destructure it
   let location = useLocation() //{pathname: '/vans/2', search: '', hash: '', state: {queryString: 'type=rugged'}, key: 'f13k8zss'}
@@ -16,14 +17,23 @@ const VanDetails = () => {
   const [vanInfo, setVanInfo] = React.useState(null)
 
   React.useEffect(()=>{
-    fetch(`/api/vans/${params.id}`)
-    .then(res => res.json())
-    .then(data => {
-      console.log("specific van",data)
-      setVanInfo(data.vans)
-    })
+    const loadData = async () => {
+      try{
+        const data = await getVanDetails(params.id)
+        console.log("specific van",data)
+        setVanInfo(data.vans)
+      } catch(error) {
+          setError(error)
+      }
+    }
+
+    loadData()
   },[]) //you could have params.id in the dependency arr if there was a link leading to a different id on this page but otherwise this is save, you fetch once
 
+  if (error){
+    return(<h2>{error.message}</h2>)
+  }
+  
   return (
     <>                        {/*relative so it does not go to parent*/}
     <Link to={`..?${queryString}`} relative="path" className="back-button">&larr; Back to {type} vans</Link>
