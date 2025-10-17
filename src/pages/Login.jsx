@@ -18,8 +18,7 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const formData = new FormData(e.target)
-        const data = Object.fromEntries(formData)
+        const data = Object.fromEntries(new FormData(e.target))
         setLoginFormData(data)
         console.log(data)
     }
@@ -27,6 +26,7 @@ const Login = () => {
   return (
     <div className="login-container">
         <h1>Sign in to your account</h1>
+        {/* <form onSubmit={handleSubmit} className="login-form">*/}
         <form method="post" onSubmit={handleSubmit} className="login-form">
             <input
                 name="email" 
