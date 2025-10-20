@@ -4,6 +4,7 @@ import Home from "./pages/Home"
 import About from "./pages/About"
 import Login from "./pages/Login"
 import NotFound from "./pages/NotFound"
+import Authorized from "./pages/Authorized"
 import Vans from "./pages/Vans/Vans"
 import VanDetails from "./pages/Vans/VanDetails"
 import Layout from './components/Layout';
@@ -27,16 +28,18 @@ function App() {
           <Route element={<Layout/>}>
             <Route path="/" element={<Home/>}/>
 
-            <Route path="host" element={<HostLayout/>}> {/* this acts yet as another layout that layers on the side, you need outlet not to override the children*/}
-              <Route index element={<Dashboard />} />
-              <Route path="income" element={<Income/>}/>
-              <Route path="hostvans" element={<HostVans/>}/> {/*this Route and Route below do not share UI, but this could have been layout for the vans fetched state*/}
-              <Route path="hostvans/:id" element={<HostVansDetails/>}> {/*page & Layout*/}
-                <Route index element={<HostDetails/>}/>
-                <Route path="pricing" element={<HostPricing/>}/>
-                <Route path="photos" element={<HostPhotos/>}/>
+            <Route element={<Authorized/>}>
+              <Route path="host" element={<HostLayout/>}> {/* this acts yet as another layout that layers on the side, you need outlet not to override the children*/}
+                <Route index element={<Dashboard />} />
+                <Route path="income" element={<Income/>}/>
+                <Route path="hostvans" element={<HostVans/>}/> {/*this Route and Route below do not share UI, but this could have been layout for the vans fetched state*/}
+                <Route path="hostvans/:id" element={<HostVansDetails/>}> {/*page & Layout*/}
+                  <Route index element={<HostDetails/>}/>
+                  <Route path="pricing" element={<HostPricing/>}/>
+                  <Route path="photos" element={<HostPhotos/>}/>
+                </Route>
+                <Route path="reviews" element={<Reviews/>}/>
               </Route>
-              <Route path="reviews" element={<Reviews/>}/>
             </Route>
 
             <Route path="about" element={<About/>}/>
