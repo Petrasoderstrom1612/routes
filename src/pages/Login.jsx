@@ -19,6 +19,7 @@ const Login = () => {
 
     const location = useLocation() || {}
     //if you console.log and there is no location.state it will throw error that it is null (hence you would need to nest console.log conditionally)
+    console.log(location) //works fine
 
     const handleSubmit = (e) => {
         e.preventDefault()
