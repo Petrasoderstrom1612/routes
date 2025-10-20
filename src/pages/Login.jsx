@@ -1,4 +1,5 @@
 import React from 'react'
+import {useLocation} from "react-router-dom"
 
 const Login = () => {
     const [loginFormData, setLoginFormData] = React.useState({email: "", password:""})
@@ -16,6 +17,9 @@ const Login = () => {
     //     }))
     // }
 
+    const location = useLocation() || {}
+    //if you console.log and there is no location.state it will throw error that it is null (hence you would need to nest console.log conditionally)
+
     const handleSubmit = (e) => {
         e.preventDefault()
         const data = Object.fromEntries(new FormData(e.target))
@@ -25,6 +29,7 @@ const Login = () => {
     
   return (
     <div className="login-container">
+        {location?.state?.message && <h3>{location.state.message}</h3>}
         <h1>Sign in to your account</h1>
         {/* <form onSubmit={handleSubmit} className="login-form">*/}
         <form method="post" onSubmit={handleSubmit} className="login-form">
