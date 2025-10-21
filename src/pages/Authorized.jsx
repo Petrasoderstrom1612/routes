@@ -1,7 +1,7 @@
 import { Outlet, Navigate } from 'react-router-dom'
 
 const Authorized = () => {
-    const auth = true
+    const auth = false
 
     if (auth) {
        return(<Outlet/>) 
