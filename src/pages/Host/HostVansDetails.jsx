@@ -26,7 +26,7 @@ const HostVansDetails = () => { //one individual van and Layout
     loadData()
   },[]) //so it only happens on first render and then stores in state
 
-  if(loading){
+  if(loading){ // or if !hostVan and then I can skip row 42
     return(
       <h1>Loading...</h1>
     )
