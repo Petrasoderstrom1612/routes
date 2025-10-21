@@ -57,3 +57,16 @@ export const getVanDetails = async (paramsId) => {
     //   console.log("specific van",data)
     //   setVanInfo(data.vans)
     // })
+
+    export const loginUser = async (creds) => {
+        const res = await fetch ("/api/login", {method: "post", body: JSON.stringify(creds)})
+        const data = await res.json()
+         if (!res.ok){
+            throw{
+                status: res.status,
+                statusText: res.statusText,
+                message: data.message
+            }
+         }
+        return data
+    }
