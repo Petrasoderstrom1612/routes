@@ -20,6 +20,7 @@ const Login = () => {
     const location = useLocation() || {} //actually you do not need the empty object since you use location? on row 33
     //if you console.log and there is no location.state it will throw error that it is null (hence you would need to nest console.log conditionally)
     console.log(location) //works fine
+    //note! in order to display location, you must be on this login Route and if you want state to be displayed, you must have first been to Authorized.jsx route to render the state that is then kept in Router memory
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -30,7 +31,7 @@ const Login = () => {
     
   return (
     <div className="login-container">
-        {location?.state?.message && <h3>{location.state.message}</h3>}
+        {location?.state?.message && <h3 className="login-first">{location.state.message}</h3>}
         <h1>Sign in to your account</h1>
         {/* <form onSubmit={handleSubmit} className="login-form">*/}
         <form method="post" onSubmit={handleSubmit} className="login-form">
