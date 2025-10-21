@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useSearchParams } from "react-router-dom"; //establish connection to parameters in url
-import {getVans} from "../../apiVans"
+import {getVans} from "../../api"
 
 const Vans = () => {
     const [vans, setVans] = React.useState([])

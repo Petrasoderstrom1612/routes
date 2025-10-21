@@ -1,7 +1,7 @@
 import React from "react";
 import {useParams, Outlet, Link} from "react-router-dom"
 import VanDetailsLinks from "../../components/VanDetailsLinks";
-import { getHostVans } from "../../apiVans";
+import { getHostVans } from "../../api";
 
 const HostVansDetails = () => { //one individual van and Layout
   const { id } = useParams() //destructuring object, without curlies params.id
