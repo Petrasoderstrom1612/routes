@@ -16,8 +16,9 @@ export const getVans = async () => {
         // .then(res => res.json())
         // .then(data => data.vans)
 
-export const getHostVans = async () => {
-    const res = await fetch("/api/host/vans")
+export const getHostVans = async (id) => {
+    const url = id ? `/api/host/vans/${id}` : "/api/host/vans"
+    const res = await fetch(url)
     if(!res.ok){
         throw{ //The keyword throw immediately stops the function, the function does not continue outside of the throw
             status: res.status,
@@ -29,8 +30,8 @@ export const getHostVans = async () => {
     return data
 }
 
-// THE ORIGINAL NON ASYNC FUNCTION
-//fetch("/api/host/vans")
+// THE ORIGINAL NON ASYNC FUNCTION (two JSX HostVans.jsx and HostVansDetails.jsx)
+//fetch("/api/host/vans") & fetch(`/api/host/vans/${id}`)
 //.then(res => res.json())
 //.then(data => {
 //  console.log("HostVans", data.vans)
