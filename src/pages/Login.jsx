@@ -5,6 +5,7 @@ import {loginUser} from "../api"
 const Login = () => {
     const [loginFormData, setLoginFormData] = React.useState({email: "", password:""})
     const [error, setError] = React.useState(null)
+    const [submitting, setSubmitting] = React.useState(false)
     
     // function handleSubmit(e) {
     //     e.preventDefault()
@@ -25,6 +26,7 @@ const Login = () => {
     //note! in order to display location, you must be on this login Route and if you want state to be displayed, you must have first been to Authorized.jsx route to render the state that is then kept in Router memory
 
     const handleSubmit = (e) => {
+        setSubmitting(true)
         e.preventDefault()
         const data = Object.fromEntries(new FormData(e.target))
         setLoginFormData(data)
@@ -35,6 +37,8 @@ const Login = () => {
                console.log(authData)
             }catch (error){
                 setError(error)
+            } finally{
+                setSubmitting(false)
             }
         }
         loadLogin()
@@ -42,7 +46,7 @@ const Login = () => {
     
 
     if (error){
-        <h2>Sorry, we could not log you in. Try</h2>
+        <h2 aria-live="assertive">{error.message}</h2>
     }
 
     
@@ -66,7 +70,7 @@ const Login = () => {
                 // value={loginFormData.password}
                 placeholder="Password"
             />
-            <button>Log in</button>
+            <button disabled={submitting}>Log in</button>
         </form>
     </div>
   )
