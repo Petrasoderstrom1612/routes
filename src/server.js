@@ -57,7 +57,7 @@ export function makeServer() {
             foundUser.password = undefined
             return {
                 user: foundUser,
-                token: ""
+                token: "123456"
             }
         })
 
