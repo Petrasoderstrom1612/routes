@@ -28,18 +28,22 @@ const Login = () => {
         e.preventDefault()
         const data = Object.fromEntries(new FormData(e.target))
         setLoginFormData(data)
+
         const loadLogin = async() =>{
             try{
-                const data = await loginUser(loginFormData)
-                console.log("happy path", data)
+               const authData = await loginUser(loginFormData) 
+               console.log(authData)
             }catch (error){
                 setError(error)
             }
         }
         loadLogin()
+    }   
+    
+
+    if (error){
+        <h2>Sorry, we could not log you in. Try</h2>
     }
-
-
 
     
   return (
