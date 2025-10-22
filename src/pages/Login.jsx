@@ -35,8 +35,10 @@ const Login = () => {
             try{
                const authData = await loginUser(loginFormData) 
                console.log(authData)
+               setError(null) //just to be sure
             }catch (error){
                 setError(error)
+                console.log(error)
             } finally{
                 setSubmitting(false)
             }
@@ -44,16 +46,14 @@ const Login = () => {
         loadLogin()
     }   
     
-
-    if (error){
-        <h2 aria-live="assertive">{error.message}</h2>
-    }
-
     
   return (
     <div className="login-container">
-        {location?.state?.message && <h3 className="login-first">{location.state.message}</h3>}
         <h1>Sign in to your account</h1>
+        {error 
+        ? <h3 className="login-first" aria-live="assertive">{error.message}</h3> //coming from server.js
+        : location.state?.message && <h3 className="login-first">{location.state.message}</h3> //coming from Authorized state
+}
         {/* <form onSubmit={handleSubmit} className="login-form">*/}
         <form method="post" onSubmit={handleSubmit} className="login-form">
             <input
@@ -70,7 +70,7 @@ const Login = () => {
                 // value={loginFormData.password}
                 placeholder="Password"
             />
-            <button disabled={submitting}>Log in</button>
+            <button disabled={submitting}>{submitting ? "Logging in..." : "Log in"}</button>
         </form>
     </div>
   )
