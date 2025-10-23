@@ -34,7 +34,7 @@ const Login = () => {
         const loadLogin = async() =>{
             try{
                setSubmitting(true)
-               const authData = await loginUser(loginFormData) 
+               const authData = await loginUser(loginFormData) //If an error is thrown, the execution immediately jumps to the catch (error) block 
                console.log(authData)
                setError(null) //just to be sure
             }catch (error){
@@ -51,9 +51,9 @@ const Login = () => {
   return (
     <div className="login-container">
         <h1>Sign in to your account</h1>
-        {error 
-        ? <h3 className="login-first" aria-live="assertive">{error.message}</h3> //coming from server.js
-        : location.state?.message && <h3 className="login-first">{location.state.message}</h3> //coming from Authorized state
+        {error?.message //if there is an error and it has a message property 
+        ? <h3 className="login-first" aria-live="assertive">{error.message}</h3> //coming from server.js "No user with credentials found"
+        : location.state?.message && <h3 className="login-first">{location.state.message}</h3> //coming from Authorized state "You must log in first"
 }
         {/* <form onSubmit={handleSubmit} className="login-form">*/}
         <form method="post" onSubmit={handleSubmit} className="login-form">
@@ -71,7 +71,7 @@ const Login = () => {
                 // value={loginFormData.password}
                 placeholder="Password"
             />
-            <button disabled={submitting}>{submitting ? "Logging in..." : "Log in"}</button>
+            <button disabled={status === "submitting"}>{status = "submitting" ? "Logging in..." : "Log in"}</button>
         </form>
     </div>
   )
