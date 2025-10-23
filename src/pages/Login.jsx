@@ -33,6 +33,7 @@ const Login = () => {
 
         const loadLogin = async() =>{
             try{
+               setSubmitting(true)
                const authData = await loginUser(loginFormData) 
                console.log(authData)
                setError(null) //just to be sure
