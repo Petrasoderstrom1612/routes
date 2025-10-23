@@ -35,7 +35,7 @@ const Login = () => {
         const loadLogin = async() =>{
             try{
                setSubmitting(true)
-               const authData = await loginUser(loginFormData) //If an error is thrown, the execution immediately jumps to the catch (error) block 
+               const authData = await loginUser(data) //If an error is thrown, the execution immediately jumps to the catch (error) block 
                console.log(authData)
                setError(null) //just to be sure
             navigate("/host")
