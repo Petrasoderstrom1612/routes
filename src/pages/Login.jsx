@@ -71,7 +71,7 @@ const Login = () => {
                 // value={loginFormData.password}
                 placeholder="Password"
             />
-            <button disabled={status === "submitting"}>{status = "submitting" ? "Logging in..." : "Log in"}</button>
+            <button disabled={submitting}>{submitting ? "Logging in..." : "Log in"}</button>
         </form>
     </div>
   )
