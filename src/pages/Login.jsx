@@ -1,5 +1,5 @@
 import React from 'react'
-import {useLocation} from "react-router-dom"
+import {useLocation, useNavigate} from "react-router-dom"
 import {loginUser} from "../api"
 
 const Login = () => {
@@ -24,6 +24,7 @@ const Login = () => {
     //if you console.log and there is no location.state it will throw error that it is null (hence you would need to nest console.log conditionally)
     //console.log(location) //works fine
     //note! in order to display location, you must be on this login Route and if you want state to be displayed, you must have first been to Authorized.jsx route to render the state that is then kept in Router memory
+    const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         setSubmitting(true)
@@ -37,6 +38,7 @@ const Login = () => {
                const authData = await loginUser(loginFormData) //If an error is thrown, the execution immediately jumps to the catch (error) block 
                console.log(authData)
                setError(null) //just to be sure
+            navigate("/host")
             }catch (error){
                 setError(error)
                 console.log(error)
