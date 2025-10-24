@@ -36,9 +36,10 @@ const Login = () => {
             try{
                setSubmitting(true)
                const authData = await loginUser(data) //If an error is thrown, the execution immediately jumps to the catch (error) block 
+               localStorage.setItem("loggedin",true)
                console.log(authData)
                setError(null) //just to be sure
-            navigate("/host")
+               navigate("/host", { replace: true })  //jumps over the layout, it is a bit like ../ relative
             }catch (error){
                 setError(error)
                 console.log(error)
@@ -54,7 +55,7 @@ const Login = () => {
     <div className="login-container">
         <h1>Sign in to your account</h1>
         {error?.message //if there is an error and it has a message property 
-        ? <h3 className="login-first" aria-live="assertive">{error.message}</h3> //coming from server.js "No user with credentials found"
+        ? <h3 className="login-first" aria-live="assertive">{error.message}</h3> //coming from server.js "No user with credentials found / locaLt storage not found"
         : location.state?.message && <h3 className="login-first">{location.state.message}</h3> //coming from Authorized state "You must log in first"
 }
         {/* <form onSubmit={handleSubmit} className="login-form">*/}

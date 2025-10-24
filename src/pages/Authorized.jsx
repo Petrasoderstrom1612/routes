@@ -1,7 +1,7 @@
 import { Outlet, Navigate } from 'react-router-dom'
 
 const Authorized = () => {
-    const auth = true
+    const auth = localStorage.getItem("loggedin")
 
     if (auth) {
        return(<Outlet/>) 
