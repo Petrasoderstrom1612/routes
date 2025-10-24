@@ -39,7 +39,7 @@ const Login = () => {
                localStorage.setItem("loggedin",true)
                console.log(authData)
                setError(null) //just to be sure
-               navigate("/host", { replace: true })  //jumps over the layout, it is a bit like ../ relative
+               navigate("/host", { replace: true })  //don’t add a new entry to the browser’s history stack — instead, replace the current one with the page I tried to go to (before Authori layout got in the way)
             }catch (error){
                 setError(error)
                 console.log(error)
