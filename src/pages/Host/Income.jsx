@@ -1,4 +1,5 @@
 import React from 'react'
+import incomeTable from "../../assets/images/income-table.png"
 
 const Income = () => {
  const transactionsData = [
@@ -15,7 +16,7 @@ const Income = () => {
             <h2>$2,260</h2>
             <img
                 className="graph"
-                src="/assets/images/income-graph.png"
+                src={incomeTable}
                 alt="Income graph"
             />
             <div className="info-header">
