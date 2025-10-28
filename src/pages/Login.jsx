@@ -20,11 +20,16 @@ const Login = () => {
     //     }))
     // }
 
-    const location = useLocation() || {} //actually you do not need the empty object since you use location? on row 33
+    const location = useLocation()
     //if you console.log and there is no location.state it will throw error that it is null (hence you would need to nest console.log conditionally)
     //console.log(location) //works fine
     //note! in order to display location, you must be on this login Route and if you want state to be displayed, you must have first been to Authorized.jsx route to render the state that is then kept in Router memory
     const navigate = useNavigate() // get the navigation function from the hook (must be done separatelly, cannot be done as a oneliner with the path)
+    console.log("login location",location)
+
+    const from = location.state?.from || "/host" //The location exists because you create the obj on row 23. If you came from Authorized, there will always be state with from. If you clicked directly to log in, the state will be null 
+    //console.log from Authorized: {pathname: '/login', search: '', hash: '', state: {message: "You must log in first", from: '/host'}, key: 'vt6k496w'} or from: '/host/vans/123' etc
+    //console.log from Login directly {pathname: '/login', search: '', hash: '', state: null, key: 'ireijduv'}
 
     const handleSubmit = (e) => {
         setSubmitting(true)
@@ -39,7 +44,7 @@ const Login = () => {
                localStorage.setItem("loggedin",true)
                console.log(authData)
                setError(null) //just to be sure
-               navigate("/host", { replace: true })  //don’t add a new entry to the browser’s history stack — instead, replace the current one with the page I tried to go to (before Authori layout got in the way)
+               navigate(from, { replace: true })  //don’t add a new entry to the browser’s history stack — instead, replace the current one with the page I tried to go to (before Authori layout got in the way)
             }catch (error){
                 setError(error)
                 console.log(error)
