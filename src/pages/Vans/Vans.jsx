@@ -21,7 +21,7 @@ const Vans = () => {
                 setLoading(true)
             try{
                 const data = await getVans() //the connection to the API
-                setVans(data.vans)
+                setVans(data)
             } catch (err){
                 setError(err)
                 console.log(err)
