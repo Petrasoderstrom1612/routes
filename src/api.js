@@ -40,12 +40,27 @@ const vansCollectionRef = collection(db, "vans") //comes from Firebase database
 
     //FIREBASE
     export async function getVans() {
-    const snapshot = await getDocs(vansCollectionRef)
-    const vans = snapshot.docs.map(doc => ({
+    const snapshot = await getDocs(vansCollectionRef) // https://firebase.google.com/docs/firestore/query-data/get-data#get_all_documents_in_a_collection
+    const vans = snapshot.docs.map(doc => ({ //the docs are the vans (objects) in Firebase
         ...doc.data(),
         id: doc.id
     }))
     return vans
+    }
+    //------------------------------------------------------------------------------------
+
+    //MODERN ASYNC FUNCTION
+    export const getVanDetails = async (paramsId) => {
+        const res = await fetch(`/api/vans/${paramsId}`)
+        if (!res.ok){
+            throw {
+                status: res.status,
+                statusText: res.statusText,
+                message: "failed to fetch van details"
+            }
+        }
+        const data = await res.json()
+        return data
     }
 
     //MODERN ASYNC FUNCTION
@@ -71,18 +86,6 @@ const vansCollectionRef = collection(db, "vans") //comes from Firebase database
     // setVans(data.vans)})
     // .catch(() => setVans([])) //added catch if no vans data
 
-    export const getVanDetails = async (paramsId) => {
-        const res = await fetch(`/api/vans/${paramsId}`)
-        if (!res.ok){
-            throw {
-                status: res.status,
-                statusText: res.statusText,
-                message: "failed to fetch van details"
-            }
-        }
-        const data = await res.json()
-        return data
-    }
 
     // fetch(`/api/vans/${params.id}`)
     // .then(res => res.json())
