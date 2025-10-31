@@ -1,7 +1,7 @@
 import React from "react";
 import {useParams, Outlet, Link} from "react-router-dom"
 import VanDetailsLinks from "../../components/VanDetailsLinks";
-import { getHostVans } from "../../api";
+import { getOneHostVan } from "../../api";
 
 const HostVansDetails = () => { //one individual van and Layout
   const { id } = useParams() //destructuring object, without curlies params.id
@@ -13,9 +13,9 @@ const HostVansDetails = () => { //one individual van and Layout
     const loadData = async () => {
       setLoading(true)
       try {
-        const data = await getHostVans(id)
-        setHostVan(data.vans[0]) //great trick so you do not have to go so deep in JSX
-        console.log(hostVan)
+        const data = await getOneHostVan(id)
+        console.log("data",data)
+        setHostVan(data) //great trick so you do not have to go so deep in JSX
       } catch (error) {
         setError(error)
         console.log(error.message)

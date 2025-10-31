@@ -1,6 +1,6 @@
 
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs, doc, getDoc } from "firebase/firestore/lite" //added this - a lighter version, if you skip /lite you get a full version
+import { getFirestore, collection, getDocs, doc, getDoc, query, where } from "firebase/firestore/lite" //added this - a lighter version, if you skip /lite you get a full version
 
 const firebaseConfig = {
   apiKey: "AIzaSyCeUnjgNx_o9DgS-rkHBeHxxn7cxGc4d74",
@@ -71,20 +71,40 @@ const db = getFirestore(app) //added this
     // }
     
     //------------------------------------------------------------------------------------
-    //MODERN ASYNC FUNCTION
-    export const getHostVans = async (id) => {
-        const url = id ? `/api/host/vans/${id}` : "/api/host/vans"
-        const res = await fetch(url)
-        if(!res.ok){
-            throw{ //The keyword throw immediately stops the function, the function does not continue outside of the throw
-                status: res.status,
-                statusText: res.statusText,
-                message: "failed to fetch host vans"
-            }
-        }
-        const data = await res.json()
-        return data
+    //FIREBASE - AUTHORIZED Get all documents from a collection and add id to them
+    export const getHostVans = async () => {
+        const q = query(collection(db, "vans"), where("hostId", "==", "123"));
+        const snapshot = await getDocs(q)  
+        const vans = snapshot.docs.map(doc => ({ 
+            ...doc.data(),
+            id: doc.id 
+        }))
+        console.log("Query result:", snapshot.docs)
+        return vans
     }
+
+    //FIREBASE - xcopy of getVanDetails - no AUTHORIZATION
+    export const getOneHostVan = async (id) => {
+        const vanFromVansCollectionRef = doc(db, "vans", id)
+        const snapshot = await getDoc(vanFromVansCollectionRef)  
+        const van = {...snapshot.data(), id: snapshot.id}
+        return van
+    }
+
+    //MODERN ASYNC FUNCTION
+    // export const getHostVans = async (id) => {
+    //     const url = id ? `/api/host/vans/${id}` : "/api/host/vans"
+    //     const res = await fetch(url)
+    //     if(!res.ok){
+    //         throw{ //The keyword throw immediately stops the function, the function does not continue outside of the throw
+    //             status: res.status,
+    //             statusText: res.statusText,
+    //             message: "failed to fetch host vans"
+    //         }
+    //     }
+    //     const data = await res.json()
+    //     return data
+    // }
     
     //THE ORIGINAL NON ASYNC FUNCTION (two JSX HostVans.jsx and HostVansDetails.jsx)
     // fetch("/api/host/vans") & fetch(`/api/host/vans/${id}`)

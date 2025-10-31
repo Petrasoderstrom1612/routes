@@ -10,7 +10,7 @@ const HostVans = () => { //all vans
       const loadData = async() => {
         try{
             const data = await getHostVans()
-            setVans(data.vans)
+            setVans(data)
           } catch(error) {
             setErr(error)
           } 
