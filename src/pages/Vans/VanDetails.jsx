@@ -1,5 +1,6 @@
 import React from 'react'
 import {useParams, useLocation, Link} from "react-router-dom"
+import {getVanDetails} from "../../api"
 
 
 const VanDetails = () => {
@@ -21,7 +22,7 @@ const VanDetails = () => {
       try{
         const data = await getVanDetails(params.id)
         console.log("specific van",data)
-        setVanInfo(data.vans)
+        setVanInfo(data)
       } catch(error) {
           setError(error)
       }
